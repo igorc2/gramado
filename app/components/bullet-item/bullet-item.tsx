@@ -23,7 +23,7 @@ const BULLET_TEXT: TextStyle = {
   flex: 1,
   fontFamily: typography.primary,
   color: "#BAB6C8",
-  fontSize: 15,
+  fontSize: 14,
   lineHeight: 22,
 }
 

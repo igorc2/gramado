@@ -4,7 +4,7 @@ import { useNavigation } from "@react-navigation/native"
 import { observer } from "mobx-react-lite"
 import { Button, Header, Screen, Text, Wallpaper } from "../../components"
 import { color, spacing, typography } from "../../theme"
-const bowserLogo = require("./bowser.png")
+const bowserLogo = require("./favpng_triangle-geometry-logo.png")
 
 const FULL: ViewStyle = { flex: 1 }
 const CONTAINER: ViewStyle = {
@@ -54,14 +54,14 @@ const BOWSER: ImageStyle = {
 const CONTENT: TextStyle = {
   ...TEXT,
   color: "#BAB6C8",
-  fontSize: 15,
+  fontSize: 18,
   lineHeight: 22,
   marginBottom: spacing[5],
 }
 const CONTINUE: ViewStyle = {
   paddingVertical: spacing[4],
   paddingHorizontal: spacing[4],
-  backgroundColor: "#5D2555",
+  backgroundColor: "#FDDEAD",
 }
 const CONTINUE_TEXT: TextStyle = {
   ...TEXT,
@@ -85,15 +85,11 @@ export const WelcomeScreen = observer(function WelcomeScreen() {
       <Screen style={CONTAINER} preset="scroll" backgroundColor={color.transparent}>
         <Header headerTx="welcomeScreen.poweredBy" style={HEADER} titleStyle={HEADER_TITLE} />
         <Text style={TITLE_WRAPPER}>
-          <Text style={TITLE} text="Your new app, " />
-          <Text style={ALMOST} text="almost" />
-          <Text style={TITLE} text="!" />
+          <Text style={TITLE} text="Gramado App" />
         </Text>
-        <Text style={TITLE} preset="header" tx="welcomeScreen.readyForLaunch" />
         <Image source={bowserLogo} style={BOWSER} />
         <Text style={CONTENT}>
-          This probably isn't what your app is going to look like. Unless your designer handed you
-          this screen and, in that case, congrats! You're ready to ship.
+          Gramado App
         </Text>
         <Text style={CONTENT}>
           For everyone else, this is where you'll see a live preview of your fully functioning app
