@@ -1,10 +1,11 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useState } from "react"
 import { Image, FlatList, TextStyle, View, ViewStyle, ImageStyle } from "react-native"
 import { useNavigation } from "@react-navigation/native"
 import { observer } from "mobx-react-lite"
 import { Header, Screen, Text, Wallpaper } from "../../components"
 import { color, spacing } from "../../theme"
-import { useStores } from "../../models"
+import { useStores, useState } from "../../models"
+import { database } from '../../config/firebase'
 
 const FULL: ViewStyle = {
   flex: 1,
@@ -48,6 +49,18 @@ export const DemoListScreen = observer(function DemoListScreen() {
   const { characterStore } = useStores()
   const { characters } = characterStore
 
+
+  const [bills, setBills] = useState([]);
+
+  useEffect(() => {
+    database.collection('bills').onSnapshot((query) => {
+      const list = [];
+      query.forEach(doc => list.push(doc.data()))
+      setBills(list)
+    })
+  }, [])
+
+
   useEffect(() => {
     async function fetchData() {
       await characterStore.getCharacters()
@@ -66,6 +79,19 @@ export const DemoListScreen = observer(function DemoListScreen() {
           onLeftPress={goBack}
           style={HEADER}
           titleStyle={HEADER_TITLE}
+        />
+        <FlatList
+          contentContainerStyle={FLAT_LIST}
+          data={characters}
+          keyExtractor={(item) => String(item.id)}
+          renderItem={({ item }) => (
+            <View style={LIST_CONTAINER}>
+              <Image source={{ uri: item.image }} style={IMAGE} />
+              <Text style={LIST_TEXT}>
+                {item.name} ({item.status})
+              </Text>
+            </View>
+          )}
         />
         <FlatList
           contentContainerStyle={FLAT_LIST}

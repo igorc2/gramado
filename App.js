@@ -11,4 +11,4 @@ import App from "./app/app.tsx"
 import { AppRegistry } from "react-native"
 
 AppRegistry.registerComponent("gramado", () => App)
-export default App
+export default App;

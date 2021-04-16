@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "391298451787",
+    "project_id": "gramado-fb",
+    "storage_bucket": "gramado-fb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:391298451787:android:71930698e8fa258fb1c0ce",
+        "android_client_info": {
+          "package_name": "com.igor.gramado"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "391298451787-bvsbn4nh909p7n00mmt2mp25s18k798v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBfLH42UEiNMygFCoM-forKFbsKYwywjXU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "391298451787-bvsbn4nh909p7n00mmt2mp25s18k798v.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

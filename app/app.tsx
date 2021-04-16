@@ -25,11 +25,13 @@ import {
 } from "./navigators"
 import { RootStore, RootStoreProvider, setupRootStore } from "./models"
 import { ToggleStorybook } from "../storybook/toggle-storybook"
+import { database } from './config/firebase';
 
 // This puts screens in a native ViewController or Activity. If you want fully native
 // stack navigation, use `createNativeStackNavigator` in place of `createStackNavigator`:
 // https://github.com/kmagiera/react-native-screens#using-native-stack-navigator
 import { enableScreens } from "react-native-screens"
+import { View, Text } from 'react-native';
 enableScreens()
 
 export const NAVIGATION_PERSISTENCE_KEY = "NAVIGATION_STATE"
@@ -56,6 +58,16 @@ function App() {
     })()
   }, [])
 
+  const [ bills, setBills ] = useState([]);
+
+  useEffect(() => {
+    database.collection('bills').onSnapshot((query) => {
+      const list = [];
+      query.forEach(doc => list.push(doc.data()))
+      setBills(list)
+    })
+  }, [])
+
   // Before we show the app, we have to wait for our state to be ready.
   // In the meantime, don't render anything. This will be the background
   // color set in native by rootView's background color. You can replace
@@ -72,9 +84,17 @@ function App() {
             initialState={initialNavigationState}
             onStateChange={onNavigationStateChange}
           />
+
         </SafeAreaProvider>
       </RootStoreProvider>
     </ToggleStorybook>
+    // <View>
+    //   {
+    //     bills.map((bill) => {
+    //       return <Text key="{bill.name}">{bill.name}</Text>
+    //     })
+    //   }
+    // </View>
   )
 }
 
